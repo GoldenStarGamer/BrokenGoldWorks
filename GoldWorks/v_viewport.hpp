@@ -12,7 +12,7 @@ namespace gwe {
 		void initWindow();
 		const int width;
 		const int height;
-		std::string name;
+		std::string viewportName;
 		GLFWwindow* window;
 	};
 }
