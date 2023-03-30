@@ -135,11 +135,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="m_main.cpp" />
+    <ClCompile Include="p_main.cpp" />
     <ClCompile Include="w_window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="startup.h" />
+    <ClInclude Include="p_main.hpp" />
+    <ClInclude Include="p_startup.h" />
     <ClInclude Include="w_window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
