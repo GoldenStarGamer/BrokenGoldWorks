@@ -136,11 +136,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="v_viewport.cpp" />
+    <ClCompile Include="w_window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="startup.h" />
-    <ClInclude Include="v_viewport.hpp" />
+    <ClInclude Include="w_window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

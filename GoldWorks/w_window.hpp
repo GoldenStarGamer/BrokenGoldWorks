@@ -3,16 +3,16 @@
 #include <string>
 
 namespace gwe {
-	class gwViewport {
+	class gwWindow {
 	public:
-		gwViewport(int w, int h, std::string name);
-		~gwViewport();
+		gwWindow(int w, int h, std::string name);
+		~gwWindow();
 
 	private:
 		void initWindow();
 		const int width;
 		const int height;
-		std::string viewportName;
+		std::string windowName;
 		GLFWwindow* window;
 	};
 }
