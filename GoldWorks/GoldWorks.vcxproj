@@ -137,12 +137,27 @@
   <ItemGroup>
     <ClCompile Include="m_main.cpp" />
     <ClCompile Include="p_main.cpp" />
+    <ClCompile Include="r_pipeline.cpp" />
     <ClCompile Include="w_window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p_main.hpp" />
     <ClInclude Include="p_startup.h" />
+    <ClInclude Include="r_pipeline.hpp" />
     <ClInclude Include="w_window.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="fragment_proc.frag">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="vertex_proc.vert">
+      <FileType>Document</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="buildshaders.bat" />
+    <None Include="fragment_proc.spv" />
+    <None Include="vertex_proc.spv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
