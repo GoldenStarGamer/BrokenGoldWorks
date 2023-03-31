@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "p_startup.h"
 #include <string>
 
@@ -10,6 +11,9 @@ namespace gwe {
 	public:
 		gwWindow(int w, int h, std::string name);
 		~gwWindow();
+
+		gwWindow(const gwWindow&) = delete;
+		gwWindow& operator=(const gwWindow&) = delete;
 
 		bool shouldClose() { return glfwWindowShouldClose(window); }
 

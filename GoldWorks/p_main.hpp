@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "w_window.hpp"
 
 namespace gwe {
