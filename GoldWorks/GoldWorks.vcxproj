@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="d_device.cpp" />
+    <ClCompile Include="b_swap_chain.cpp" />
     <ClCompile Include="m_main.cpp" />
     <ClCompile Include="p_main.cpp" />
     <ClCompile Include="r_pipeline.cpp" />
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d_device.hpp" />
+    <ClInclude Include="b_swap_chain.hpp" />
     <ClInclude Include="p_main.hpp" />
     <ClInclude Include="p_startup.h" />
     <ClInclude Include="r_pipeline.hpp" />
