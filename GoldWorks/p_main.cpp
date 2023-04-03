@@ -1,7 +1,7 @@
 #include "p_main.hpp"
 
 namespace gwe {
-	void Application::run() {
+	void Base::run() {
 		std::cout << "Application::run() invoked\n";
 		while (!window.shouldClose()) {
 			glfwPollEvents();

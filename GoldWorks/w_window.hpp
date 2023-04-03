@@ -1,7 +1,10 @@
 #pragma once
+
 #include <iostream>
-#include "p_startup.h"
 #include <string>
+#include <stdexcept>
+
+#include "p_startup.h"
 
 // Put all in a namespace, gwe for GoldWorks Engine
 namespace gwe {
@@ -16,6 +19,8 @@ namespace gwe {
 		gwWindow& operator=(const gwWindow&) = delete;
 
 		bool shouldClose() { return glfwWindowShouldClose(window); }
+
+		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 
 	private:
 		void initWindow();

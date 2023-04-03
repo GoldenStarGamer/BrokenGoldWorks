@@ -19,4 +19,11 @@ namespace gwe {
 		window = glfwCreateWindow(width, height, windowName.c_str(), nullptr, nullptr);
 		std::cout << "Window created\n";
 	}
+
+	void gwWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface) {
+		if (glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS) {
+			throw std::runtime_error("Window Surface creation error.");
+		}
+		std::cout << "Window Surface created\n";
+	}
 }

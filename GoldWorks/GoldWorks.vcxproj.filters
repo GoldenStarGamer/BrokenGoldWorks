@@ -30,6 +30,9 @@
     <ClCompile Include="r_pipeline.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="d_device.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p_startup.h">
@@ -44,12 +47,15 @@
     <ClInclude Include="r_pipeline.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="d_device.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="vertex_proc.vert">
+    <CustomBuild Include="vertex_shader.vert">
       <Filter>Shaders</Filter>
     </CustomBuild>
-    <CustomBuild Include="fragment_proc.frag">
+    <CustomBuild Include="fragment_shader.frag">
       <Filter>Shaders</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -57,10 +63,10 @@
     <None Include="buildshaders.bat">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="fragment_proc.spv">
+    <None Include="fragment_shader.spv">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="vertex_proc.spv">
+    <None Include="vertex_shader.spv">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
