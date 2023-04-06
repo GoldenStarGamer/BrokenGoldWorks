@@ -97,7 +97,7 @@ VkResult gwSwapChain::submitCommandBuffers(
   vkResetFences(device.device(), 1, &inFlightFences[currentFrame]);
   if (vkQueueSubmit(device.graphicsQueue(), 1, &submitInfo, inFlightFences[currentFrame]) !=
       VK_SUCCESS) {
-    throw std::runtime_error("failed to submit draw command buffer!");
+    throw std::runtime_error("Draw Command Buffer Submission Error.");
   }
 
   VkPresentInfoKHR presentInfo = {};
@@ -165,7 +165,7 @@ void gwSwapChain::createSwapChain() {
   createInfo.oldSwapchain = VK_NULL_HANDLE;
 
   if (vkCreateSwapchainKHR(device.device(), &createInfo, nullptr, &swapChain) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create swap chain!");
+    throw std::runtime_error("Swap Chain Creation Error.");
   }
 
   // we only specified a minimum number of images in the swap chain, so the implementation is
@@ -196,7 +196,7 @@ void gwSwapChain::createImageViews() {
 
     if (vkCreateImageView(device.device(), &viewInfo, nullptr, &swapChainImageViews[i]) !=
         VK_SUCCESS) {
-      throw std::runtime_error("failed to create texture image view!");
+      throw std::runtime_error("Texture Image View Creation Error.");
     }
   }
 }
@@ -258,7 +258,7 @@ void gwSwapChain::createRenderPass() {
   renderPassInfo.pDependencies = &dependency;
 
   if (vkCreateRenderPass(device.device(), &renderPassInfo, nullptr, &renderPass) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create render pass!");
+    throw std::runtime_error("Render Pass Creation Error.");
   }
 }
 
@@ -282,7 +282,7 @@ void gwSwapChain::createFramebuffers() {
             &framebufferInfo,
             nullptr,
             &swapChainFramebuffers[i]) != VK_SUCCESS) {
-      throw std::runtime_error("failed to create framebuffer!");
+      throw std::runtime_error("Framebuffer Creation Error.");
     }
   }
 }
@@ -330,7 +330,7 @@ void gwSwapChain::createDepthResources() {
     viewInfo.subresourceRange.layerCount = 1;
 
     if (vkCreateImageView(device.device(), &viewInfo, nullptr, &depthImageViews[i]) != VK_SUCCESS) {
-      throw std::runtime_error("failed to create texture image view!");
+      throw std::runtime_error("Texture Immage View Creation Error.");
     }
   }
 }
@@ -354,7 +354,7 @@ void gwSwapChain::createSyncObjects() {
         vkCreateSemaphore(device.device(), &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]) !=
             VK_SUCCESS ||
         vkCreateFence(device.device(), &fenceInfo, nullptr, &inFlightFences[i]) != VK_SUCCESS) {
-      throw std::runtime_error("failed to create synchronization objects for a frame!");
+      throw std::runtime_error("Syncronization Objects Creation Error.");
     }
   }
 }

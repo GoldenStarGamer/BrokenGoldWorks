@@ -71,7 +71,7 @@ gwDevice::~gwDevice() {
 
 void gwDevice::createInstance() {
   if (enableValidationLayers && !checkValidationLayerSupport()) {
-    throw std::runtime_error("validation layers requested, but not available!");
+    throw std::runtime_error("Validation Layers Requested, but not Available.");
   }
 
   VkApplicationInfo appInfo = {};
@@ -103,7 +103,7 @@ void gwDevice::createInstance() {
   }
 
   if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create instance!");
+    throw std::runtime_error("Instance Creation Error.");
   }
 
   hasGflwRequiredInstanceExtensions();
@@ -113,7 +113,7 @@ void gwDevice::pickPhysicalDevice() {
   uint32_t deviceCount = 0;
   vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
   if (deviceCount == 0) {
-    throw std::runtime_error("failed to find GPUs with Vulkan support!");
+    throw std::runtime_error("Vulkan-compatible GPU Search Fail.");
   }
   std::cout << "Device count: " << deviceCount << std::endl;
   std::vector<VkPhysicalDevice> devices(deviceCount);
@@ -127,7 +127,7 @@ void gwDevice::pickPhysicalDevice() {
   }
 
   if (physicalDevice == VK_NULL_HANDLE) {
-    throw std::runtime_error("failed to find a suitable GPU!");
+    throw std::runtime_error("Suitable GPU search Fail.");
   }
 
   vkGetPhysicalDeviceProperties(physicalDevice, &properties);
@@ -173,7 +173,7 @@ void gwDevice::createLogicalDevice() {
   }
 
   if (vkCreateDevice(physicalDevice, &createInfo, nullptr, &device_) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create logical device!");
+    throw std::runtime_error("Logical Device Creation Error.");
   }
 
   vkGetDeviceQueue(device_, indices.graphicsFamily, 0, &graphicsQueue_);
@@ -190,7 +190,7 @@ void gwDevice::createCommandPool() {
       VK_COMMAND_POOL_CREATE_TRANSIENT_BIT | VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 
   if (vkCreateCommandPool(device_, &poolInfo, nullptr, &commandPool) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create command pool!");
+    throw std::runtime_error("Command Pool Creation Error.");
   }
 }
 
@@ -232,7 +232,7 @@ void gwDevice::setupDebugMessenger() {
   VkDebugUtilsMessengerCreateInfoEXT createInfo;
   populateDebugMessengerCreateInfo(createInfo);
   if (CreateDebugUtilsMessengerEXT(instance, &createInfo, nullptr, &debugMessenger) != VK_SUCCESS) {
-    throw std::runtime_error("failed to set up debug messenger!");
+    throw std::runtime_error("Debug Messenger Creation Error.");
   }
 }
 
@@ -293,7 +293,7 @@ void gwDevice::hasGflwRequiredInstanceExtensions() {
   for (const auto &required : requiredExtensions) {
     std::cout << "\t" << required << std::endl;
     if (available.find(required) == available.end()) {
-      throw std::runtime_error("Missing required glfw extension");
+      throw std::runtime_error("Missing required glfw extension.");
     }
   }
 }
@@ -388,7 +388,7 @@ VkFormat gwDevice::findSupportedFormat(
       return format;
     }
   }
-  throw std::runtime_error("failed to find supported format!");
+  throw std::runtime_error("Supported Format Search Fail.");
 }
 
 uint32_t gwDevice::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties) {
@@ -532,4 +532,4 @@ void gwDevice::createImageWithInfo(
   }
 }
 
-}  // namespace lve
+}  // namespace gwe
