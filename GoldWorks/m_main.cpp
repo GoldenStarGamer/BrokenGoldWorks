@@ -6,7 +6,7 @@
 #include "p_main.hpp" 
 
 int main(int argc, char* argv[]) {
-	gwe::Application app{};
+	gwe::Engine app{};
 
 	try {
 		app.run();
