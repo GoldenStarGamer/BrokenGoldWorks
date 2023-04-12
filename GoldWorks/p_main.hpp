@@ -10,16 +10,16 @@
 #include "d_device.hpp"
 
 namespace gwe {
-	class Base {
+	class Engine {
 	public:
 		static constexpr int WIDTH = 800;
 		static constexpr int HEIGHT = 600;
 
-		Base();
-		~Base();
+		Engine();
+		~Engine();
 
-		Base(const Base&) = delete;
-		Base& operator=(const Base&) = delete;
+		Engine(const Engine&) = delete;
+		Engine& operator=(const Engine&) = delete;
 
 		void run();
 

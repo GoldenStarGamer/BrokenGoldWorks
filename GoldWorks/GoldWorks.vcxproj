@@ -150,7 +150,7 @@
     <ClInclude Include="d_device.hpp" />
     <ClInclude Include="b_swap_chain.hpp" />
     <ClInclude Include="p_main.hpp" />
-    <ClInclude Include="p_startup.h" />
+    <ClInclude Include="p_startup.hpp" />
     <ClInclude Include="r_pipeline.hpp" />
     <ClInclude Include="w_window.hpp" />
   </ItemGroup>

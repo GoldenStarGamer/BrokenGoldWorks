@@ -215,4 +215,8 @@ namespace gwe {
 
 		return configInfo;
 	}
+
+	void gwPipeline::bind(VkCommandBuffer commandBuffer) {
+		vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, gwGraphicsPipeline);
+	}
 }

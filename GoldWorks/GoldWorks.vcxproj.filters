@@ -38,7 +38,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="p_startup.h">
+    <ClInclude Include="p_startup.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="w_window.hpp">

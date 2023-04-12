@@ -4,7 +4,7 @@
 #include <string>
 #include <stdexcept>
 
-#include "p_startup.h"
+#include "p_startup.hpp"
 
 // Put all in a namespace, gwe for GoldWorks Engine
 namespace gwe {
