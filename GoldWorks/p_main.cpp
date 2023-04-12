@@ -23,6 +23,7 @@ namespace gwe {
 			drawFrame();
 		}
 		std::cout << "Window termination signal received\n";
+		vkDeviceWaitIdle(device.device());
 	}
 
 	void Engine::createPipelineLayout() {
