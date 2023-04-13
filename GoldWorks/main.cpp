@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 #include "w_window.hpp"
-#include "p_main.hpp" 
+#include "e_engine.hpp" 
 
 int main(int argc, char* argv[]) {
 	gwe::Engine app{};

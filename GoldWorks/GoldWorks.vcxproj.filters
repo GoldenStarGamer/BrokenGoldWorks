@@ -18,13 +18,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="m_main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="w_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="p_main.cpp">
+    <ClCompile Include="e_engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="r_pipeline.cpp">
@@ -36,6 +36,9 @@
     <ClCompile Include="b_swap_chain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="m_model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="p_startup.hpp">
@@ -44,7 +47,7 @@
     <ClInclude Include="w_window.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="p_main.hpp">
+    <ClInclude Include="e_engine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="r_pipeline.hpp">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="b_swap_chain.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="m_model.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
