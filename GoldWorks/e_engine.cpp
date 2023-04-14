@@ -28,7 +28,10 @@ namespace gwe {
 	}
 
 	void Engine::loadModels() {
-		std::vector<gwModel::Vertex> vertices {{{0.0f, -0.5f}}, {{0.5f, 0.5f}}, {{-0.5f, 0.5f}}};
+		std::vector<gwModel::Vertex> vertices {
+			{ { 0.0f, -0.5f }, { 1.0f, 0.0f, 0.0f } },
+			{ { 0.5f, 0.5f }, { 0.0f, 1.0f, 0.0f } },
+			{ { -0.5f, 0.5f }, {0.0f, 0.0f, 1.0f} } };
 
 		model = std::make_unique<gwModel>(device, vertices);
 	}
