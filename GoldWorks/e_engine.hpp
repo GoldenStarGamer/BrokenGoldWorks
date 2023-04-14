@@ -8,6 +8,7 @@
 #include "r_pipeline.hpp"
 #include "b_swap_chain.hpp"
 #include "d_device.hpp"
+#include "m_model.hpp"
 
 namespace gwe {
 	class Engine {
@@ -28,6 +29,7 @@ namespace gwe {
 		void createPipeline();
 		void createCommandBuffers();
 		void drawFrame();
+		void loadModels();
 
 		gwWindow window{ WIDTH, HEIGHT, "GoldWorks Engine" };
 		gwDevice device{ window };
@@ -35,5 +37,6 @@ namespace gwe {
 		std::unique_ptr<gwPipeline> pipeline;
 		VkPipelineLayout pipelineLayout;
 		std::vector<VkCommandBuffer> commandBuffers;
+		std::unique_ptr<gwModel> model;
 	};
 }

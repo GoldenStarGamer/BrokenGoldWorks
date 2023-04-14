@@ -6,9 +6,10 @@
 #include "e_engine.hpp" 
 
 int main(int argc, char* argv[]) {
+	try {
 	gwe::Engine app{};
 
-	try {
+	
 		app.run();
 	}
 	catch (const std::exception& e) {
