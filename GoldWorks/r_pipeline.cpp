@@ -45,10 +45,10 @@ namespace gwe {
 		const PipelineConfigInfo& configInfo) {
 
 		assert(configInfo.pipelineLayout != VK_NULL_HANDLE &&
-			"Graphics Pipeline Creation Error:: pipelineLayout not provided in configInfo");
+			"Graphics Pipeline Creation Error: pipelineLayout not provided in configInfo");
 
 		assert(configInfo.renderPass != VK_NULL_HANDLE &&
-			"Graphics Pipeline Creation Error:: renderPass not provided in configInfo");
+			"Graphics Pipeline Creation Error: renderPass not provided in configInfo");
 
 		auto vertCode = readFile(vertFilepath);
 		std::cout << "Vertex Shader Code file opened\n";
