@@ -28,7 +28,7 @@ namespace gwe {
 		if (!file.is_open()) {
 			throw std::runtime_error("File open failure: " + filepath + ".");
 		}
-		std::cout << "File opened: " << filepath << std::endl;
+		std::cerr << "File opened: " << filepath << std::endl;
 
 		size_t filesize = static_cast<size_t>(file.tellg());
 		std::vector<char> buffer(filesize);
@@ -52,17 +52,17 @@ namespace gwe {
 			"Graphics Pipeline Creation Error:: renderPass not provided in configInfo");
 
 		auto vertCode = readFile(vertFilepath);
-		std::cout << "Vertex Shader Code file opened\n";
-		std::cout << "Vertex Shader Code Size: " << vertCode.size() << "\n";
+		std::cerr << "Vertex Shader Code file opened\n";
+		std::cerr << "Vertex Shader Code Size: " << vertCode.size() << "\n";
 
 		auto fragCode = readFile(fragFilepath);
-		std::cout << "Fragment Shader Code file opened\n";
-		std::cout << "Fragment Shader Code Size: " << fragCode.size() << "\n";
+		std::cerr << "Fragment Shader Code file opened\n";
+		std::cerr << "Fragment Shader Code Size: " << fragCode.size() << "\n";
 
-		std::cout << "Creating Vertex Shader Module\n";
+		std::cerr << "Creating Vertex Shader Module\n";
 		createShaderModule(vertCode, &vertShaderModule);
 
-		std::cout << "Creating Fragment Shader Module\n";
+		std::cerr << "Creating Fragment Shader Module\n";
 		createShaderModule(fragCode, &fragShaderModule);
 
 		VkPipelineShaderStageCreateInfo shaderStages[2];
@@ -123,7 +123,7 @@ namespace gwe {
 		pipelineInfo.basePipelineIndex = -1;
 		pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
-		std::cout << "Creating Graphics Pipeline\n";
+		std::cerr << "Creating Graphics Pipeline\n";
 
 		// Pipeline Creation
 		if (vkCreateGraphicsPipelines(workDevice.device(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &gwGraphicsPipeline) != VK_SUCCESS) {
@@ -140,7 +140,7 @@ namespace gwe {
 		if (vkCreateShaderModule(workDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS) {
 			throw std::runtime_error("Shader Module Creation Error.");
 		}
-		std::cout << "Shader Module Created\n";
+		std::cerr << "Shader Module Created\n";
 	}
 	
 	PipelineConfigInfo gwPipeline::defaultPipelineConfigInfo(uint32_t width, uint32_t height) {

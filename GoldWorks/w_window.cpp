@@ -8,22 +8,33 @@ namespace gwe {
 	gwWindow::~gwWindow() {
 		glfwDestroyWindow(window);
 		glfwTerminate();
-		std::cout << "Window destroyed\n";
+		std::cerr << "Window destroyed\n";
 	}
 
 	void gwWindow::initWindow() {
 		glfwInit();
 		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
 		window = glfwCreateWindow(width, height, windowName.c_str(), nullptr, nullptr);
-		std::cout << "Window created\n";
+		glfwSetWindowUserPointer(window, this);
+		glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
+		std::cerr << "Window created\n";
 	}
 
 	void gwWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface) {
 		if (glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS) {
 			throw std::runtime_error("Window Surface creation error.");
 		}
-		std::cout << "Window Surface created\n";
+		std::cerr << "Window Surface created\n";
 	}
+
+	void gwWindow::framebufferResizeCallback(GLFWwindow* argwindow, int width, int height) {
+		auto window = reinterpret_cast<gwWindow*>(glfwGetWindowUserPointer(argwindow));
+		window->framebufferResized = true;
+		window->width = width;
+		window->height = height;
+
+	}
+
 }

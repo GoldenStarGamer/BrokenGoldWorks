@@ -32,7 +32,7 @@ namespace gwe {
 		~gwPipeline();
 
 		gwPipeline(const gwPipeline&) = delete;
-		void operator=(const gwPipeline&) = delete;
+		gwPipeline& operator=(const gwPipeline&) = delete;
 
 		void bind(VkCommandBuffer commandBuffer);
 

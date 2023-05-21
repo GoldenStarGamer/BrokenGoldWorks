@@ -35,7 +35,7 @@ class gwDevice {
 
   // Not copyable or movable
   gwDevice(const gwDevice &) = delete;
-  void operator=(const gwDevice &) = delete;
+  gwDevice& operator=(const gwDevice &) = delete;
   gwDevice(gwDevice &&) = delete;
   gwDevice &operator=(gwDevice &&) = delete;
 

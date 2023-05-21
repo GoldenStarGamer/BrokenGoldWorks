@@ -30,10 +30,12 @@ namespace gwe {
 		void createCommandBuffers();
 		void drawFrame();
 		void loadModels();
+		void recreateSwapChain();
+		void recordCommandBuffer( int imageIndex );
 
 		gwWindow window{ WIDTH, HEIGHT, "GoldWorks Engine" };
 		gwDevice device{ window };
-		gwSwapChain swapChain{ device, window.getExent() };
+		std::unique_ptr<gwSwapChain> swapChain;
 		std::unique_ptr<gwPipeline> pipeline;
 		VkPipelineLayout pipelineLayout;
 		std::vector<VkCommandBuffer> commandBuffers;

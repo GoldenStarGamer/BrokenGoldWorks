@@ -19,7 +19,7 @@ class gwSwapChain {
   ~gwSwapChain();
 
   gwSwapChain(const gwSwapChain &) = delete;
-  void operator=(const gwSwapChain &) = delete;
+  gwSwapChain& operator=(const gwSwapChain &) = delete;
 
   VkFramebuffer getFrameBuffer(int index) { return swapChainFramebuffers[index]; }
   VkRenderPass getRenderPass() { return renderPass; }
