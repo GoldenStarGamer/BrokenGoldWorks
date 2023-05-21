@@ -50,7 +50,8 @@ namespace gwe {
 	}
 
 	void Engine::createPipeline() {
-		auto pipelineConfig = gwPipeline::defaultPipelineConfigInfo(swapChain->width(), swapChain->height());
+		PipelineConfigInfo pipelineConfig{}; // FUCKING PIECE OF SHIT "NO DEFAULT CONSTRUCTOR AVAILABLE MY ASS BURN IN HELL PIECE OF SHIT
+		gwPipeline::defaultPipelineConfigInfo(pipelineConfig);
 		pipelineConfig.renderPass = swapChain->getRenderPass();
 		pipelineConfig.pipelineLayout = pipelineLayout;
 		pipeline = std::make_unique<gwPipeline>("vertex_shader.spv", "fragment_shader.spv", device, pipelineConfig);
