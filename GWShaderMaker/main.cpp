@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 
 	if (argc < 3 || argc > 4) {
 		cout << "Invalid Arguments" << endl
-			<< "Format: GWShaderMaker.exe <compiled vertex shader file> <compiled vfragment shader file> <output file>(optional)";
+			<< "Format: GWShaderMaker.exe <compiled vertex shader file> <compiled fragment shader file> <output file>(optional)";
 		return 1;
 	}
 
@@ -27,6 +27,8 @@ int main(int argc, char* argv[]) {
 	fstream shaders[2];
 
 	shaders[0].open(argv[1], ios::in | ios::binary);
+
+	shaders[1].open(argv[2], ios::in | ios::binary);
 
 	fstream output(name);
 
