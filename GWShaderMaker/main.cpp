@@ -70,5 +70,5 @@ int main(int argc, char* argv[]) {
 	shaders[1].close();
 	output.close();
 
-	return 0;
+	return 0; // finish
 }
