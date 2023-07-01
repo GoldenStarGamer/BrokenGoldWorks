@@ -13,7 +13,6 @@ namespace gwe {
 
 	Engine::~Engine() {
 		vkDestroyPipelineLayout(device.device(), pipelineLayout, nullptr);
-
 	}
 
 	void Engine::run() {
@@ -42,7 +41,7 @@ namespace gwe {
 		auto pipelineConfig = gwPipeline::defaultPipelineConfigInfo(swapChain.width(), swapChain.height());
 		pipelineConfig.renderPass = swapChain.getRenderPass();
 		pipelineConfig.pipelineLayout = pipelineLayout;
-		pipeline = std::make_unique<gwPipeline>("vertex_shader.spv", "fragment_shader.spv", device, pipelineConfig);
+		pipeline = std::make_unique<gwPipeline>("shader.gws", device, pipelineConfig);
 	}
 
 	void Engine::createCommandBuffers() {

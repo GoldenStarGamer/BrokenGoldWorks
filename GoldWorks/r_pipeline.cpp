@@ -8,12 +8,11 @@
 namespace gwe {
 
 	gwPipeline::gwPipeline(
-		const std::string& vertFilepath,
-		const std::string& fragFilepath,
+		const std::string& filePath,
 		gwDevice& device,
 		const PipelineConfigInfo& configInfo) : workDevice{ device } {
 
-		createGraphicsPipeline(vertFilepath, fragFilepath, configInfo);
+		createGraphicsPipeline(filePath, configInfo);
 	}
 
 	gwPipeline::~gwPipeline() {
@@ -22,7 +21,9 @@ namespace gwe {
 		vkDestroyPipeline(workDevice.device(), gwGraphicsPipeline, nullptr);
 	}
 
-	std::vector<char> gwPipeline::readFile(const std::string& filepath) {
+	std::vector<char> gwPipeline::readFile(const std::string& filepath, shadertype shaderType) {
+		gwShaderHeader shaderHeader;
+
 		std::ifstream file{filepath, std::ios::ate | std::ios::binary};
 		if (!file.is_open()) {
 			throw std::runtime_error("File open failure: " + filepath + ".");
@@ -32,16 +33,37 @@ namespace gwe {
 		size_t filesize = static_cast<size_t>(file.tellg());
 		std::vector<char> buffer(filesize);
 
+		std::vector<char> shader;
+
 		file.seekg(0);
-		file.read(buffer.data(), filesize);
+		file.read(reinterpret_cast<char*>(&shaderHeader.version), 4);
+		file.read(reinterpret_cast<char*>(&shaderHeader.vertexSize), 4);
+		file.read(reinterpret_cast<char*>(&shaderHeader.fragmentSize), 4);
+		file.read(reinterpret_cast<char*>(&shaderHeader.vertexLocation), 4);
+		file.read(reinterpret_cast<char*>(&shaderHeader.fragmentLocation), 4);
+
+		switch (shaderType)
+		{
+		case gwe::vertex:
+			file.seekg(shaderHeader.vertexLocation);
+			shader.resize(shaderHeader.vertexSize);
+			file.read(shader.data(), shaderHeader.vertexSize);
+			break;
+		case gwe::fragment:
+			file.seekg(shaderHeader.fragmentLocation);
+			shader.resize(shaderHeader.fragmentSize);
+			file.read(shader.data(), shaderHeader.fragmentSize);
+			break;
+		default:
+			break;
+		}
 
 		file.close();
-		return buffer;
+		return shader;
 	}
 
 	void gwPipeline::createGraphicsPipeline(
-		const std::string& vertFilepath,
-		const std::string& fragFilepath,
+		const std::string& filePath,
 		const PipelineConfigInfo& configInfo) {
 
 		assert(configInfo.pipelineLayout != VK_NULL_HANDLE &&
@@ -50,11 +72,11 @@ namespace gwe {
 		assert(configInfo.renderPass != VK_NULL_HANDLE &&
 			"Graphics Pipeline Creation Error: renderPass not provided in configInfo");
 
-		auto vertCode = readFile(vertFilepath);
+		auto vertCode = readFile(filePath, vertex);
 		std::cout << "Vertex Shader Code file opened\n";
 		std::cout << "Vertex Shader Code Size: " << vertCode.size() << "\n";
 
-		auto fragCode = readFile(fragFilepath);
+		auto fragCode = readFile(filePath, fragment);
 		std::cout << "Fragment Shader Code file opened\n";
 		std::cout << "Fragment Shader Code Size: " << fragCode.size() << "\n";
 
